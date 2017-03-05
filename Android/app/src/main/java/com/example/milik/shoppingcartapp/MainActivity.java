@@ -23,12 +23,13 @@ public class MainActivity extends AppCompatActivity {
 
     EditText LoginUserName;
     EditText LoginPassword;
+
     Button LoginLogin;
     ImageButton HomeStartShopping;
     int Total = 0;
 
     private TextView mResultTextView;
-
+    TextView mTotal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         setContentView(R.layout.activity_main);
                         Button scanBarcodeButton = (Button) findViewById(R.id.scan_barcode_button);
+                        mResultTextView = (TextView) findViewById(R.id.result_textview);
+                        mTotal = (TextView) findViewById(R.id.result_total);
                         scanBarcodeButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        mResultTextView = (TextView) findViewById(R.id.result_textview);
+
     }
 
     @Override
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     Point[] p = barcode.cornerPoints;
                     Total += 1.00;
                     mResultTextView.setText("Pure Life water: $1.00" + mResultTextView.getText());
+                    mTotal.setText(String.format("Total: %.2f", Total));
                 } else mResultTextView.setText("No barcode found");
             } else Log.e(LOG_TAG, "Error occurred");
         } else super.onActivityResult(requestCode, resultCode, data);
