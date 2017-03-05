@@ -21,11 +21,17 @@
         android:id="@+id/result_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="______________\nTotal: $0.00"
+        android:text="______________"
         android:layout_below="@id/scan_barcode_button"
         android:textSize="22sp"
         android:freezesText="true"
         android:layout_centerVertical="true"
         android:gravity="center"
         android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/result_total"
+        android:layout_below="@id/result_textview"
+        android:text="Total: $0.00"/>
 </RelativeLayout>

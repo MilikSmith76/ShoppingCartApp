@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     EditText LoginPassword;
     Button LoginLogin;
     ImageButton HomeStartShopping;
+    int Total = 0;
 
     private TextView mResultTextView;
 
@@ -70,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
                 if (data != null) {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
                     Point[] p = barcode.cornerPoints;
-                    mResultTextView.setText(barcode.displayValue);
+                    Total += 1.00;
+                    mResultTextView.setText("Pure Life water: $1.00" + mResultTextView.getText());
                 } else mResultTextView.setText("No barcode found");
             } else Log.e(LOG_TAG, "Error occurred");
         } else super.onActivityResult(requestCode, resultCode, data);
