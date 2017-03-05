@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
@@ -18,22 +21,46 @@ public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private static final int BARCODE_READER_REQUEST_CODE = 1;
 
+    EditText LoginUserName;
+    EditText LoginPassword;
+    Button LoginLogin;
+    ImageButton HomeStartShopping;
+
     private TextView mResultTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mResultTextView = (TextView) findViewById(R.id.result_textview);
-
-        Button scanBarcodeButton = (Button) findViewById(R.id.scan_barcode_button);
-        scanBarcodeButton.setOnClickListener(new View.OnClickListener() {
+        //login
+        setContentView(R.layout.login);
+        LoginUserName = (EditText) findViewById(R.id.login_username);
+        LoginPassword = (EditText) findViewById(R.id.login_password);
+        LoginLogin = (Button) findViewById(R.id.login_buttonLogin);
+        LoginLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), BarcodeCaptureActivity.class);
-                startActivityForResult(intent, BARCODE_READER_REQUEST_CODE);
+            public void onClick(View v) {
+                setContentView(R.layout.homepage);
+                HomeStartShopping = (ImageButton) findViewById(R.id.home_start);
+                HomeStartShopping.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        setContentView(R.layout.activity_main);
+                        Button scanBarcodeButton = (Button) findViewById(R.id.scan_barcode_button);
+                        scanBarcodeButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(getApplicationContext(), BarcodeCaptureActivity.class);
+                                startActivityForResult(intent, BARCODE_READER_REQUEST_CODE);
+                            }
+                        });
+                    }
+                });
             }
         });
+
+
+
+        mResultTextView = (TextView) findViewById(R.id.result_textview);
     }
 
     @Override

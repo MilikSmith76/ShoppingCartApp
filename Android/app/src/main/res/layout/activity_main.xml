@@ -10,24 +10,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.milik.shoppingcartapp.MainActivity">
 
-    <TextView
-        android:id="@+id/result_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="No barcodes found"
-        android:textSize="22sp"
-        android:freezesText="true"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
-
     <Button
         android:id="@+id/scan_barcode_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="scan"
-        android:layout_below="@id/result_textview"
         android:background="@color/colorAccent"
         android:textColor="@color/common_google_signin_btn_text_dark"/>
-
+    <TextView
+        android:id="@+id/result_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="______________\nTotal: $0.00"
+        android:layout_below="@id/scan_barcode_button"
+        android:textSize="22sp"
+        android:freezesText="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 </RelativeLayout>
